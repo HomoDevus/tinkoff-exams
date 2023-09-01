@@ -1,0 +1,38 @@
+Пример 1
+2
+abcccca
+babb   
+2
+abcccca
+babb
+11   
+11
+Пример 2
+5
+aaa
+aba
+ccccc
+bbbbbbbb
+bbbb   
+5
+aaa
+aba
+ccccc
+bbbbbbbb
+bbbb
+15   
+15
+Пример 3
+5
+babccba
+abcca
+ababaaaabbbbcc
+abcaaaccbb
+ababbbba   
+5
+babccba
+abcca
+ababaaaabbbbcc
+abcaaaccbb
+ababbbba
+12   
