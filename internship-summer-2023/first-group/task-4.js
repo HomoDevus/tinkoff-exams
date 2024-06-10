@@ -1,3 +1,31 @@
+// Input
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+const lines = [];
+rl.on('line', line => {
+  lines.push(line.toString())
+
+  if (lines.length === 2) {
+    rl.close()
+  }
+})
+
+rl.on('close', () => {
+  const [len, numbers] = lines
+  const result = findLongestBoringPrefix(parseNumbersLine(numbers), parseInt(len))
+  console.log(result + '');
+})
+
+function parseNumbersLine(str) {
+  return str.trim().split(' ').map(item => parseInt(item))
+}
+
+// ##########
+
+// Solution
 function findLongestBoringPrefix(numbers, len) {
   let numbersDict = {}
 
@@ -45,29 +73,3 @@ function hasOnlyOneDiff(numbers) {
 
   return filtered.length === 1 || filtered.length === numbers.length - 1
 }
-
-function parseNumbersLine(str) {
-  return str.trim().split(' ').map(item => parseInt(item))
-}
-
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-const lines = [];
-rl.on('line', line => {
-  lines.push(line.toString())
-
-  if (lines.length === 2) {
-    rl.close()
-  }
-})
-
-rl.on('close', () => {
-  const [len, numbers] = lines
-  const result = findLongestBoringPrefix(parseNumbersLine(numbers), parseInt(len))
-  console.log(result + '');
-})

@@ -1,3 +1,32 @@
+// Input
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+const lines = [];
+
+function parseNumbersLine(str) {
+  return str.trim().split(' ').map(item => parseInt(item))
+}
+
+rl.on('line', line => {
+  lines.push(line.toString())
+
+  if (lines.length === 2) {
+    rl.close()
+  }
+})
+
+rl.on('close', () => {
+  const [_, numbers] = lines
+  const result = run(parseNumbersLine(numbers))
+  console.log(result + '');
+})
+
+// ##########
+
+// Solution
 function buildPrefixTable(numbers) {
   let prefixTable = [0]
 
@@ -68,29 +97,3 @@ function run(numbers) {
   let reasonableSubstrings = findReasonableSubstrings(prefixTable)
   return countNormalSubstrings(numbers, reasonableSubstrings)
 }
-
-function parseNumbersLine(str) {
-  return str.trim().split(' ').map(item => parseInt(item))
-}
-
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-const lines = [];
-rl.on('line', line => {
-  lines.push(line.toString())
-
-  if (lines.length === 2) {
-    rl.close()
-  }
-})
-
-rl.on('close', () => {
-  const [_, numbers] = lines
-  const result = run(parseNumbersLine(numbers))
-  console.log(result + '');
-})
